@@ -2,6 +2,7 @@
   "name": "react-deploy-demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://k1eran.github.io/react-demo-website",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -10,13 +11,15 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "scripts": { 
+   "start": "react-scripts start",
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
+   "build": "react-scripts build",
+   "test": "react-scripts test",
+   "eject": "react-scripts eject"
   },
-  "eslintConfig": {
+"eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
