@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/k1eran/react-demo-website/static/css/main.5f361e03.chunk.css",
+    "main.js": "/k1eran/react-demo-website/static/js/main.c49673ca.chunk.js",
+    "main.js.map": "/k1eran/react-demo-website/static/js/main.c49673ca.chunk.js.map",
+    "runtime-main.js": "/k1eran/react-demo-website/static/js/runtime-main.216bd61a.js",
+    "runtime-main.js.map": "/k1eran/react-demo-website/static/js/runtime-main.216bd61a.js.map",
+    "static/js/2.02839d66.chunk.js": "/k1eran/react-demo-website/static/js/2.02839d66.chunk.js",
+    "static/js/2.02839d66.chunk.js.map": "/k1eran/react-demo-website/static/js/2.02839d66.chunk.js.map",
+    "index.html": "/k1eran/react-demo-website/index.html",
+    "precache-manifest.b5bbbd6ed4bf480cf43c89e0f00eb3f0.js": "/k1eran/react-demo-website/precache-manifest.b5bbbd6ed4bf480cf43c89e0f00eb3f0.js",
+    "service-worker.js": "/k1eran/react-demo-website/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/k1eran/react-demo-website/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.02839d66.chunk.js.LICENSE.txt": "/k1eran/react-demo-website/static/js/2.02839d66.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/k1eran/react-demo-website/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.216bd61a.js",
+    "static/js/2.02839d66.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.c49673ca.chunk.js"
+  ]
+}
