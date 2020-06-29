@@ -24,6 +24,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      xIsNext: true,
       sqs: Array(9).fill(null),
     };
   }
@@ -37,12 +38,17 @@ class Board extends React.Component {
     console.log("handleSqClick hit " + i);
     // Treat sqs as immutable so code is cleaner.
     const sqsCopy = this.state.sqs.slice();
-    sqsCopy[i] = "x";
-    this.setState({ sqs: sqsCopy });
+
+    let symbol = this.state.xIsNext ? "X" : "0";
+    sqsCopy[i] = symbol;
+    this.setState({
+      sqs: sqsCopy,
+      xIsNext: !this.state.xIsNext,
+    });
   }
 
   render() {
-    const status = "Next player: X";
+    const status = "Next player: " + (this.state.xIsNext ? "X" : "0");
 
     return (
       <div>
