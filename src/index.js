@@ -2,31 +2,43 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
-  }
-  render() {
-    return (
-      <button
-        className="square"
-        onClick={() => {
-          this.setState({ value: "X" });
-          console.log("X hit");
-        }}
-      >
-        {this.state.value}
-      </button>
-    );
-  }
+/* In React, function components (like Square), 
+   only contain a render() method and don't have their own state.
+   The earlier versioj of this extended React.Component
+ */
+function Square(props) {
+  return (
+    <button
+      className="square"
+      onClick={() => {
+        props.onClick();
+        console.log("X hit");
+      }}
+    >
+      {props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sqs: Array(9).fill(null),
+    };
+  }
   renderSquare(i) {
-    return <Square value={i} />;
+    return (
+      <Square value={this.state.sqs[i]} onClick={() => this.handleSqClick(i)} />
+    );
+  }
+
+  handleSqClick(i) {
+    console.log("handleSqClick hit " + i);
+    // Treat sqs as immutable so code is cleaner.
+    const sqsCopy = this.state.sqs.slice();
+    sqsCopy[i] = "x";
+    this.setState({ sqs: sqsCopy });
   }
 
   render() {
