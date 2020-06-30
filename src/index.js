@@ -2,6 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+// https://stackoverflow.com/questions/48156902/how-can-i-draw-red-horizontal-line-in-react
+// need to move colors to CSS
+const ColoredLine = ({ color }) => (
+  <hr
+    style={{
+      color: color,
+      backgroundColor: color,
+      height: 5,
+    }}
+  />
+);
+
 /* In React, function components (like Square), 
    only contain a render() method and don't have their own state.
    The earlier versioj of this extended React.Component
@@ -57,6 +69,7 @@ class Board extends React.Component {
     }
 
     return (
+      // it must return one div
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
@@ -74,6 +87,7 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        <ColoredLine color="blue" />
       </div>
     );
   }
