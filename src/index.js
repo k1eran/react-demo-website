@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import { Button } from "antd";
 
 // https://stackoverflow.com/questions/48156902/how-can-i-draw-red-horizontal-line-in-react
 // need to move colors to CSS
@@ -88,6 +89,23 @@ class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
         <ColoredLine color="blue" />
+        <Button
+          type="primary"
+          onClick={() => alert("you clicked the antd button of type primary")}
+        >
+          antd 1
+        </Button>
+
+        <Button
+          type="ghost"
+          onClick={() => alert("you clicked the antd button of type ghost")}
+        >
+          antd 2
+        </Button>
+
+        <button onClick={() => alert("you clicked the html button")}>
+          vanilla html
+        </button>
       </div>
     );
   }
