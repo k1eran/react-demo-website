@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { Button } from "antd";
 
+debugger;
+
 // https://stackoverflow.com/questions/48156902/how-can-i-draw-red-horizontal-line-in-react
 // need to move colors to CSS
 const ColoredLine = ({ color }) => (
