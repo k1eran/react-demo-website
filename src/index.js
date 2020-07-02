@@ -17,7 +17,7 @@ const ColoredLine = ({ color }) => (
 
 /* In React, function components (like Square), 
    only contain a render() method and don't have their own state.
-   The earlier versioj of this extended React.Component
+   The earlier version of this extended React.Component
  */
 function Square(props) {
   return (
@@ -34,45 +34,19 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      xIsNext: true,
-      sqs: Array(9).fill(null),
-    };
-  }
   renderSquare(i) {
     return (
-      <Square value={this.state.sqs[i]} onClick={() => this.handleSqClick(i)} />
+      <Square
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
+      />
     );
   }
 
-  handleSqClick(i) {
-    console.log("handleSqClick hit " + i);
-    // Treat sqs as immutable so code is cleaner.
-    const sqsCopy = this.state.sqs.slice();
-
-    let symbol = this.state.xIsNext ? "X" : "0";
-    sqsCopy[i] = symbol;
-    this.setState({
-      sqs: sqsCopy,
-      xIsNext: !this.state.xIsNext,
-    });
-  }
-
   render() {
-    const winner = calculateWinner(this.state.sqs);
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
-
     return (
       // it must return one div
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -112,18 +86,71 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [
+        {
+          squares: Array(9).fill(null),
+        },
+      ],
+      xIsNext: true,
+    };
+  }
+
   render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+    let status;
+    if (winner) {
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+    }
+
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board
+            squares={current.squares}
+            onClick={(i) => this.handleSqClick(i)}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
+          <div>{status}</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
     );
+  }
+
+  handleSqClick(i) {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const sqsCopy = current.squares.slice();
+
+    console.log("handleSqClick hit " + i);
+    console.log("current = " + current);
+    console.log("sqsCopy[i] = " + sqsCopy[i]);
+
+    // Treat sqs as immutable so code is cleaner.
+    const winner = calculateWinner(current.squares);
+
+    if (winner || sqsCopy[i]) {
+      console.log("return early, winner=", winner);
+      return;
+    }
+    let symbol = this.state.xIsNext ? "X" : "0";
+    sqsCopy[i] = symbol;
+    this.setState({
+      history: history.concat([
+        {
+          squares: sqsCopy,
+        },
+      ]),
+      xIsNext: !this.state.xIsNext,
+    });
   }
 }
 
