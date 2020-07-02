@@ -116,7 +116,7 @@ class Game extends React.Component {
         <div className="game-board">
           <Board
             squares={current.squares}
-            onClick={(i) => this.handleSqClick(i)}
+            onClick={(i) => this.handleClick(i)}
           />
         </div>
         <div className="game-info">
@@ -127,7 +127,7 @@ class Game extends React.Component {
     );
   }
 
-  handleSqClick(i) {
+  handleClick(i) {
     const history = this.state.history;
     const current = history[history.length - 1];
     const sqsCopy = current.squares.slice();
